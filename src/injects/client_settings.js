@@ -20,7 +20,31 @@
 
             contentArea.innerHTML = html;
             initTabs();
+            initSettings();
         });
+    }
+
+    async function initSettings() {
+        const settings = await window.api.getSettings();
+        const proj = settings.projects || {};
+
+        const timeoutInput = document.getElementById('timeout-input');
+        const soundInput = document.getElementById('sound-notification');
+        const markInput = document.getElementById('mark-as-viewed');
+
+        if (proj.timeout != null) timeoutInput.value = proj.timeout;
+        if (proj['sound-notification'] != null) soundInput.checked = proj['sound-notification'];
+        if (proj['mark-as-viewed'] != null) markInput.checked = proj['mark-as-viewed'];
+
+        const save = async (section, key, value) => {
+            const s = await window.api.getSettings();
+            s[section][key] = value;
+            await window.api.setSettings(s);
+        };
+
+        timeoutInput.addEventListener('change', () => save('projects', 'timeout', parseFloat(timeoutInput.value) || 5));
+        soundInput.addEventListener('change', () => save('projects', 'sound-notification', soundInput.checked));
+        markInput.addEventListener('change', () => save('projects', 'mark-as-viewed', markInput.checked));
     }
 
     function moveBorder(tab) {

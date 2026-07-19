@@ -1,5 +1,4 @@
 {
-    "general": {},
     "projects": {
         "timeout": 5,
         "sound-notification": true,

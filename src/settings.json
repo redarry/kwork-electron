@@ -1,0 +1,8 @@
+{
+    "general": {},
+    "projects": {
+        "timeout": 5,
+        "sound-notification": true,
+        "mark-as-viewed": false
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "kwork-electron",
+  "productName": "kwork-electron",
+  "version": "1.0.0",
+  "description": "Kwork freelance marketplace client",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "/usr/lib/electron42/electron --no-sandbox --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage ."
+  },
+  "keywords": [],
+  "author": "redarry",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.0.0"
+  }
+}
